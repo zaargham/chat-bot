@@ -8,7 +8,7 @@ const sendMessage = require('../templates/sendMessage');
 
      if (payload === 'WELCOME') {
         request({
-            url: "https://business.facebook.com/" + senderID,
+            url: "https://business.facebook.com/v13.0/" + senderID,
             qs: {
                 access_token: process.env.PAGE_ACCESS_TOKEN,
                 fields: "first_name"
