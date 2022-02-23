@@ -2,6 +2,7 @@ const request = require('request');
 const senderAction = require('../templates/senderAction');
 const sendMessage = require('../templates/sendMessage');
 const sendGenericTemplate = require('../templates/sendGenericTemplate');
+require('dotenv').config()
 
 module.exports = function processMessage(event) {
     if (!event.message.is_echo) {

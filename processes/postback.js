@@ -1,6 +1,7 @@
 const request = require('request');
 const senderAction = require('../templates/senderAction');
 const sendMessage = require('../templates/sendMessage');
+require('dotenv').config()
 
  module.exports = function processPostback(event) {
      const senderID = event.sender.id;
@@ -8,7 +9,7 @@ const sendMessage = require('../templates/sendMessage');
 
      if (payload === 'WELCOME') {
         request({
-            url: "https://business.facebook.com/v13.0/" + senderID,
+            url: "https://graph.facebook.com/v13.0/" + senderID,
             qs: {
                 access_token: process.env.PAGE_ACCESS_TOKEN,
                 fields: "first_name"
