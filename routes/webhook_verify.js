@@ -21,15 +21,23 @@ module.exports = function(app, chalk){
        if callbacks are batched. */
        req.body.entry.forEach(function(entry) {
        // Iterate over each messaging event
-          entry.messaging.forEach(function(event) {
-          console.log(event);
-          if (event.postback){
-             processPostback(event);
-          } else if (event.message){
-             processMessage(event);
-          }
-      });
+      //     entry.messaging.forEach(function(event) {
+      //     console.log(event);
+         //  if (event.postback){
+         //     processPostback(event);
+         //  } else if (event.message){
+         //     processMessage(event);
+         //  }
+      // });
+      webhook_event= entry.messaging[0];
+      if (webhook_event.postback){
+         processPostback(webhook_event);
+      } else if (webhook_event.message){
+         processMessage(webhook_event);
+      }
+
     });
+   
     res.sendStatus(200);
    }
   });
